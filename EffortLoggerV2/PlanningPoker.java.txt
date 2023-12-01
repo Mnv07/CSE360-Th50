@@ -1,0 +1,523 @@
+import javafx.animation.AnimationTimer;
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+import javafx.geometry.Insets;
+import javafx.geometry.;
+import java.util.;
+import java.io.;
+import org.apache.poi.ss.usermodel.;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.xssf.usermodel.*;
+import org.apache.poi.ss.usermodel.Workbook;
+public void saveExcel(Stage primaryStage, String userStory, String keyWords, String storyPoints) {
+    	GridPane gridPane = new GridPane();
+        gridPane.setVgap(10);
+        gridPane.setHgap(10);
+        gridPane.setPadding(new Insets(10, 10, 10, 10));
+    	Label question = new Label ("Would you like to change anything before saving this project?");
+    	Label uStory = new Label("User Story: ");
+    	Label keyWs = new Label("Key Words: ");
+    	Label sPoint = new Label ("Story Points: ");
+    	Label pName = new Label ("Project Name: ");
+    	Label addNo = new Label ("Additional Notes: ");
+    	Label path = new Label ("Path: ");
+    	TextField uS = new TextField();
+    	TextField kW = new TextField();
+    	TextField sP = new TextField();
+    	TextField pN = new TextField();
+    	TextField p = new TextField();
+    	TextField aD = new TextField();
+    	uS.setText(userStory);
+    	kW.setText(keyWords);
+    	sP.setText(storyPoints);
+    	uS.setMinWidth(300);  // Set minimum width
+        kW.setMinWidth(300);
+        sP.setMinWidth(300);
+        pN.setMinWidth(300);
+        p.setMinWidth(300);
+        aD.setMinWidth(300);
+    	Button save = new Button ("Save Project");
+    	save.setOnAction(new EventHandler<>() {
+            public void handle(ActionEvent event) {
+            	//make if statement for input validation and path
+            	try(Workbook workbook = new XSSFWorkbook()) {
+            		Sheet sheet = workbook.createSheet(pN.getText());
+            		Row row0 = sheet.createRow(0);
+            		Row row1 = sheet.createRow(1);
+            		Row row2 = sheet.createRow(2);
+            		row0.setHeightInPoints(50);
+            		sheet.setColumnWidth(0, 15*256);
+            		sheet.setColumnWidth(1, 15*256);
+            		sheet.setColumnWidth(2, 15*256);
+            		sheet.setColumnWidth(3, 15*256);
+            		sheet.setColumnWidth(4, 15*256);
+            		sheet.setColumnWidth(5, 30*256);
+            		sheet.setColumnWidth(6, 15*256);
+            		sheet.setColumnWidth(7, 40*256);
+            		sheet.setColumnWidth(8, 3*256);
+            		sheet.setColumnWidth(9, 10*256);
+            		sheet.setColumnWidth(10, 30*256);
+            		sheet.setColumnWidth(11, 60*256);
+            		sheet.setColumnWidth(12, 30*256);
+            		sheet.setColumnWidth(13, 30*256);
+            		sheet.setColumnWidth(14, 15*256);
+            		sheet.setColumnWidth(15, 15*256);
+            		sheet.setColumnWidth(16, 15*256);
+            		sheet.setColumnWidth(17, 15*256);
+            		sheet.setColumnWidth(18, 25*256);
+            		sheet.setColumnWidth(19, 80*256);
+            		Cell cellA1 = row0.createCell(0);
+            		Cell cellB1 = row0.createCell(1);
+            		Cell cellC1 = row0.createCell(2);
+            		Cell cellD1 = row0.createCell(3);
+            		Cell cellE1 = row0.createCell(4);
+            		Cell cellF1 = row0.createCell(5);
+            		Cell cellJ1 = row0.createCell(9);
+            		Cell cellK1 = row0.createCell(10);
+            		Cell cellL1 = row0.createCell(11);
+            		Cell cellM1 = row0.createCell(12);
+            		Cell cellN1 = row0.createCell(13);
+            		Cell cellP1 = row0.createCell(15);
+            		Cell cellQ1 = row0.createCell(16);
+            		Cell cellR1 = row0.createCell(17);
+            		Cell cellS1 = row0.createCell(18);
+            		Cell cellC2 = row1.createCell(2);
+            		Cell cellD2 = row1.createCell(3);
+            		Cell cellE2 = row1.createCell(4);
+            		Cell cellG2 = row1.createCell(6);
+            		Cell cellR2 = row1.createCell(17);
+            		Cell cellS2 = row1.createCell(18);
+            		Cell cellA3 = row2.createCell(0);
+            		Cell cellB3 = row2.createCell(1);
+            		Cell cellC3 = row2.createCell(2);
+            		Cell cellD3 = row2.createCell(3);
+            		Cell cellE3 = row2.createCell(4);
+            		Cell cellF3 = row2.createCell(5);
+            		Cell cellG3 = row2.createCell(6);
+            		Cell cellH3 = row2.createCell(7);
+            		Cell cellJ3 = row2.createCell(9);
+            		Cell cellK3 = row2.createCell(10);
+            		Cell cellL3 = row2.createCell(11);
+            		Cell cellM3 = row2.createCell(12);
+            		Cell cellN3 = row2.createCell(13);
+            		Cell cellO3 = row2.createCell(14);
+            		Cell cellP3 = row2.createCell(15);
+            		Cell cellQ3 = row2.createCell(16);
+            		Cell cellR3 = row2.createCell(17);
+            		Cell cellS3 = row2.createCell(18);
+            		CellRangeAddress merge1 = new CellRangeAddress(0,0,0,1);
+            		CellRangeAddress merge2 = new CellRangeAddress(0,0,2,4);
+            		CellRangeAddress merge3 = new CellRangeAddress(0,0,9,10);
+            		CellRangeAddress merge4 = new CellRangeAddress(0,0,12,13);
+            		CellRangeAddress merge5 = new CellRangeAddress(1,1,2,3);
+            		sheet.addMergedRegion(merge1);
+            		sheet.addMergedRegion(merge2);
+            		sheet.addMergedRegion(merge3);
+            		sheet.addMergedRegion(merge4);
+            		sheet.addMergedRegion(merge5);
+            		cellA1.setCellValue("Effort Log for Project: ");
+            		cellC1.setCellValue(pN.getText());
+            		cellF1.setCellValue("Number of Entries: ");
+            		cellJ1.setCellValue("Defect Log for Project: ");
+            		cellL1.setCellValue(pN.getText());
+            		cellM1.setCellValue("Number of Entries: ");
+            		cellP1.setCellValue("Story Points: ");
+            		cellQ1.setCellValue(storyPoints);
+            		cellR1.setCellValue("User Story: ");
+            		cellS1.setCellValue(userStory);
+            		cellC2.setCellValue("Time");
+            		cellE2.setCellValue("Delta");
+            		cellG2.setCellValue("Effort");
+            		cellR2.setCellValue("Key Words: ");
+            		cellS2.setCellValue(keyWords);
+            		cellA3.setCellValue("Number");
+            		cellB3.setCellValue("Date");
+            		cellC3.setCellValue("Start");
+            		cellD3.setCellValue("Stop");
+            		cellE3.setCellValue("Time");
+            		cellF3.setCellValue("Life Cycle Step");
+            		cellG3.setCellValue("Category");
+            		cellH3.setCellValue("Deliverable/Interruption/etc.");
+            		cellJ3.setCellValue("Number");
+            		cellK3.setCellValue("Name");
+            		cellL3.setCellValue("Detail");
+            		cellM3.setCellValue("Injected");
+            		cellN3.setCellValue("Removed");
+            		cellO3.setCellValue("Category");
+            		cellP3.setCellValue("Status");
+            		cellQ3.setCellValue("Fix");
+            		cellR3.setCellValue("Additional Notes: ");
+            		cellS3.setCellValue(aD.getText());
+            		try(FileOutputStream fileOut = new FileOutputStream(p.getText())) {
+            			workbook.write(fileOut);
+            			//Go back to Main menu here
+            		}
+            	} catch (IOException e) {
+            		e.printStackTrace();
+            	}
+            }
+    	});
+    	// Adding elements to gridPane
+        gridPane.add(question, 0, 0, 2, 1);
+        gridPane.add(uStory, 0, 1);
+        gridPane.add(uS, 1, 1);
+        gridPane.add(keyWs, 0, 2);
+        gridPane.add(kW, 1, 2);
+        gridPane.add(sPoint, 0, 3);
+        gridPane.add(sP, 1, 3);
+        gridPane.add(pName, 0, 4);
+        gridPane.add(pN, 1, 4);
+        gridPane.add(addNo, 0, 5);
+        gridPane.add(p, 1, 6);
+        gridPane.add(path, 0, 6);
+        gridPane.add(save, 1, 7);
+        gridPane.add(aD,1,5);
+        Scene scene = new Scene(gridPane, 600, 400);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Save Excel Project");
+        primaryStage.show();
+    }
+    public void readExcel(Stage primaryStage) {
+    	GridPane grid = new GridPane();
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setVgap(10);
+        grid.setHgap(10);
+        Label numFile = new Label("Input number of files:");
+    	Label exFold = new Label("Input the path of an excel file you want to use: ");
+    	Label info = new Label("");
+    	TextField numFileT = new TextField();
+    	numFileT.setPrefColumnCount(80);
+    	numFileT.setMinWidth(300);
+    	exFold.setMaxWidth(Double.MAX_VALUE);
+    	exFold.setWrapText(true);
+    	TextField excelFold = new TextField();
+    	excelFold.setPrefColumnCount(80);
+    	excelFold.setMinWidth(300);
+    	Button submit = new Button("Submit");
+    	submit.setOnAction(new EventHandler<>() {
+            public void handle(ActionEvent event) {
+            	if (excelFold.getText().equals("none") ) {
+            		planningPoker(primaryStage, null, null, null);
+            	} else if (numFileT.getText().isEmpty() == false){
+            		String[] projNames = new String[Integer.parseInt(numFileT.getText())];
+            		String[] storyPoints = new String[Integer.parseInt(numFileT.getText())];
+            		String[] keyWords = new String[Integer.parseInt(numFileT.getText())];
+            		int nameCounter = 0;
+            		int pointCounter = 0;
+            		int wordCounter = 0;
+            					try(FileInputStream fileInputStream = new FileInputStream(excelFold.getText());
+            							XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream)) {
+            						Sheet sheet = workbook.getSheetAt(0);
+            						Row row0 = sheet.getRow(0);
+            						Row row1 = sheet.getRow(1);
+            						Cell pName = row0.getCell(2);
+            						Cell stPoint = row0.getCell(16);
+            						Cell kWords = row1.getCell(18);
+            						if (pName != null) {
+            							CellType cellType = pName.getCellTypeEnum();
+            							if (cellType == CellType.STRING) {
+            								projNames[nameCounter] = pName.getStringCellValue();
+            								nameCounter++;
+            							}
+            						}
+            						if (stPoint != null) {
+            							CellType cellType = stPoint.getCellTypeEnum();
+            							if (cellType == CellType.STRING) {
+            								storyPoints[pointCounter] = stPoint.getStringCellValue();
+            								pointCounter++;
+            							}
+            						}
+            						if (kWords != null) {
+            							CellType cellType = kWords.getCellTypeEnum();
+            							if (cellType == CellType.STRING) {
+            								keyWords[wordCounter] = kWords.getStringCellValue();
+            								wordCounter++;
+            							}
+            						}
+            					} catch (IOException e) {
+            						e.printStackTrace();
+            					}
+            				
+            	
+            			planningPoker(primaryStage, projNames, storyPoints, keyWords);
+            } else {
+            	info.setText("Make sure a number is the number of files.");
+            }
+    	}
+        });
+    	ColumnConstraints columnConstraints = new ColumnConstraints();
+        columnConstraints.setFillWidth(true);
+        grid.getColumnConstraints().add(columnConstraints);
+    	GridPane.setConstraints(exFold, 0, 0);
+    	GridPane.setConstraints(excelFold, 0, 1);
+    	GridPane.setConstraints(submit, 0, 2);
+    	GridPane.setConstraints(info, 0, 3);
+    	// Adding elements to gridPane
+        grid.add(exFold, 0, 0, 2, 1);
+        grid.add(excelFold, 0, 1, 2, 1);
+        grid.add(submit, 0, 2);
+    	grid.add(numFile, 0, 4);
+    	grid.add(numFileT, 0, 5);
+    	Scene scene = new Scene(grid, 400, 150);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Read Excel");
+        primaryStage.show();
+    }
+    public void planningPoker(Stage primaryStage, String[] projNames, String[] storyPoints, String[] keyWords) {
+    	TabPane tabPane = new TabPane();
+    	GridPane grid = new GridPane();
+    	GridPane tile = new GridPane();
+    	GridPane grid2 = new GridPane();
+    	grid2.setPadding(new Insets(100, 100, 100, 100));
+    	grid2.setVgap(5);
+    	grid2.setHgap(5);
+    	tile.setPadding(new Insets(30, 30, 30, 30));
+    	tile.setVgap(5);
+    	tile.setHgap(5);
+    	grid.setPadding(new Insets(100, 100, 100, 100));
+    	grid.setVgap(5);
+    	grid.setHgap(5);
+    	int length = 0;
+    	if (projNames != null) {
+    		length = projNames.length;
+    	}
+    	String[] fullString = new String[length];
+    	CheckBox[] c = new CheckBox[length];
+    	TextField[] t = new TextField[length];
+    	for (int i = 0; i < fullString.length; i++) {
+    		fullString[i] = projNames[i] + ":" + keyWords[i] + ":" + storyPoints[i];
+    	}
+    	for (int i = 0; i < fullString.length; i++) {
+    		CheckBox h = new CheckBox(fullString[i]);
+    		h.setIndeterminate(false);
+    		c[i] = h;
+    		GridPane.setConstraints(h, 0, i);
+    		tile.getChildren().add(h);
+    		TextField tF = new TextField(fullString[i]);
+    		tF.setEditable(false);
+    		t[i] = tF;
+    		GridPane.setConstraints(tF, 1, i);
+    		tile.getChildren().add(tF);
+    	}
+    	ScrollPane scroll = new ScrollPane();
+    	Label pName = new Label("New project name:");
+    	Label pUserS = new Label("User Story: ");
+    	Label pKey = new Label("Key words: ");
+    	Label pSP = new Label("Story Point Average: ");
+    	Label pPSP = new Label("Story Point Average: ");
+    	Label pPC = new Label("Planning Poker Card/Project's Story Point Value: ");
+    	Label issue = new Label("");
+    	TextField pNameT = new TextField();
+    	TextField pUserST = new TextField();
+    	TextField pKeyT = new TextField();
+    	TextField pSPT = new TextField();
+    	TextField pPSPT = new TextField();
+    	TextField pPCT = new TextField();
+    	RadioButton zero = new RadioButton();
+    	RadioButton half = new RadioButton();
+    	RadioButton one = new RadioButton();
+    	RadioButton two = new RadioButton();
+    	RadioButton three = new RadioButton();
+    	RadioButton five = new RadioButton();
+    	RadioButton eight = new RadioButton();
+    	RadioButton thirteen = new RadioButton();
+    	RadioButton twenty = new RadioButton();
+    	RadioButton fourty = new RadioButton();
+    	RadioButton oneHundred = new RadioButton();
+    	ToggleGroup toggleGroup = new ToggleGroup();
+    	zero.setText("0");
+    	half.setText("1/2");
+    	one.setText("1");
+    	two.setText("2");
+    	three.setText("3");
+    	five.setText("5");
+    	eight.setText("8");
+    	thirteen.setText("13");
+    	twenty.setText("20");
+    	fourty.setText("40");
+    	oneHundred.setText("100");
+    	zero.setToggleGroup(toggleGroup);
+    	half.setToggleGroup(toggleGroup);
+    	one.setToggleGroup(toggleGroup);
+    	two.setToggleGroup(toggleGroup);
+    	three.setToggleGroup(toggleGroup);
+    	five.setToggleGroup(toggleGroup);
+    	eight.setToggleGroup(toggleGroup);
+    	thirteen.setToggleGroup(toggleGroup);
+    	twenty.setToggleGroup(toggleGroup);
+    	fourty.setToggleGroup(toggleGroup);
+    	oneHundred.setToggleGroup(toggleGroup);
+    	pPCT.setEditable(false);
+    	pPSPT.setEditable(false);
+    	pSPT.setEditable(false);
+    	pPCT.setPrefColumnCount(10);
+    	pSPT.setPrefColumnCount(10);
+    	pNameT.setPrefColumnCount(20);
+    	pUserST.setPrefColumnCount(20);
+    	pKeyT.setPrefColumnCount(20);
+    	pPSPT.setPrefColumnCount(10);
+    	Button submit2 = new Button("Create Project");
+    	submit2.setOnAction(new EventHandler<>() {
+            public void handle(ActionEvent event) {
+            	RadioButton selectedRadioButton = (RadioButton) toggleGroup.getSelectedToggle();
+            	if (selectedRadioButton != null) {
+            		String labelText = selectedRadioButton.getText();
+            		saveExcel(primaryStage, pUserST.getText(), labelText, pKeyT.getText());
+            	} else {
+            		issue.setText("You need to click a number.");
+            	}
+            }
+    	});
+    	Button submit = new Button("Submit");
+    	submit.setOnAction(new EventHandler<>() {
+            public void handle(ActionEvent event) {
+            	int storyPointAverage = 0;
+            	int count = 0;
+            	
+            	for (int i = 0; i < fullString.length; i++) {
+            		if (c[i].isSelected()) {
+            			storyPointAverage += Integer.parseInt(storyPoints[i]);
+            			if (t[i].isEditable()) {
+            				storyPointAverage += Integer.parseInt(t[i].getText());
+            			}
+            			t[i].setEditable(true);
+            			count++;
+            		} else {
+            			t[i].clear();
+            			t[i].setEditable(false);
+            		}
+            	}
+            		if (fullString.length != 0) {
+            			storyPointAverage = storyPointAverage/count;
+            			pSPT.setText(String.valueOf(storyPointAverage));
+            			pPSPT.setText(String.valueOf(storyPointAverage));
+            		} else {
+            			pSPT.setText("*No historical data to provide info.*");
+            			pPSPT.setText("*No historical data to provide info.*");
+            		}
+            }
+        });
+    	zero.setOnAction(new EventHandler<ActionEvent>() {
+    		public void handle(ActionEvent event) {
+    			pPCT.setText("0");
+    		}
+    	});
+    	half.setOnAction(new EventHandler<ActionEvent>() {
+    		public void handle(ActionEvent event) {
+    			pPCT.setText("1/2");
+    		}
+    	});
+    	one.setOnAction(new EventHandler<ActionEvent>() {
+    		public void handle(ActionEvent event) {
+    			pPCT.setText("1");
+    		}
+    	});
+    	two.setOnAction(new EventHandler<ActionEvent>() {
+    		public void handle(ActionEvent event) {
+    			pPCT.setText("2");
+    		}
+    	});
+    	three.setOnAction(new EventHandler<ActionEvent>() {
+    		public void handle(ActionEvent event) {
+    			pPCT.setText("3");
+    		}
+    	});
+    	five.setOnAction(new EventHandler<ActionEvent>() {
+    		public void handle(ActionEvent event) {
+    			pPCT.setText("5");
+    		}
+    	});
+    	eight.setOnAction(new EventHandler<ActionEvent>() {
+    		public void handle(ActionEvent event) {
+    			pPCT.setText("8");
+    		}
+    	});
+    	thirteen.setOnAction(new EventHandler<ActionEvent>() {
+    		public void handle(ActionEvent event) {
+    			pPCT.setText("13");
+    		}
+    	});
+    	twenty.setOnAction(new EventHandler<ActionEvent>() {
+    		public void handle(ActionEvent event) {
+    			pPCT.setText("20");
+    		}
+    	});
+    	fourty.setOnAction(new EventHandler<ActionEvent>() {
+    		public void handle(ActionEvent event) {
+    			pPCT.setText("40");
+    		}
+    	});
+    	oneHundred.setOnAction(new EventHandler<ActionEvent>() {
+    		public void handle(ActionEvent event) {
+    			pPCT.setText("100");
+    		}
+    	});
+    	GridPane.setConstraints(pName, 0, 0);
+    	GridPane.setConstraints(pNameT, 1, 0);
+    	GridPane.setConstraints(pUserS, 0, 1);
+    	GridPane.setConstraints(pUserST, 1, 1);
+    	GridPane.setConstraints(pKey, 0, 2);
+    	GridPane.setConstraints(pKeyT, 1, 2);
+    	GridPane.setConstraints(pSP, 0, 3);
+    	GridPane.setConstraints(pSPT, 1, 3);
+    	GridPane.setConstraints(pPSP, 0, 0);
+    	GridPane.setConstraints(pPSPT, 1, 0);
+    	GridPane.setConstraints(pPC, 0, 1);
+    	GridPane.setConstraints(pPCT, 1, 1);
+    	GridPane.setConstraints(zero, 0, 2);
+    	GridPane.setConstraints(half, 0, 3);
+    	GridPane.setConstraints(one, 0, 4);
+    	GridPane.setConstraints(two, 0, 5);
+    	GridPane.setConstraints(three, 0, 6);
+    	GridPane.setConstraints(five, 0, 7);
+    	GridPane.setConstraints(eight, 0, 8);
+    	GridPane.setConstraints(thirteen, 0, 9);
+    	GridPane.setConstraints(twenty, 0, 10);
+    	GridPane.setConstraints(fourty, 0, 11);
+    	GridPane.setConstraints(oneHundred, 0, 12);
+    	GridPane.setConstraints(submit2, 1,1);
+    	GridPane.setConstraints(submit, 1,4);
+    	grid.getChildren().add(pName);
+    	grid.getChildren().add(pNameT);
+    	grid.getChildren().add(pUserS);
+    	grid.getChildren().add(pUserST);
+    	grid.getChildren().add(pKey);
+    	grid.getChildren().add(pKeyT);
+    	grid.getChildren().add(submit);
+    	grid.getChildren().add(pSP);
+    	grid.getChildren().add(pSPT);
+    	grid2.getChildren().add(pPSP);
+    	grid2.getChildren().add(pPSPT);
+    	grid2.getChildren().add(submit2);
+    	grid2.getChildren().addAll(zero, half, one, two, three, five, eight, thirteen, twenty, fourty, oneHundred);
+    	scroll.setPrefSize(40, 40);
+    	scroll.setContent(tile);
+    	GridPane.setConstraints(scroll, 0, 4);
+    	grid.getChildren().add(scroll);
+    	Tab tab1 = new Tab("Playing", grid);
+    	Tab tab2 = new Tab("Round End", grid2);
+    	tabPane.getTabs().add(tab1);
+    	tabPane.getTabs().add(tab2);
+    	Scene scene = new Scene(tabPane, 300, 250);
+    	primaryStage.setScene(scene);
+    	primaryStage.setTitle("Planning Poker");
+        primaryStage.show();
+    }
+}
